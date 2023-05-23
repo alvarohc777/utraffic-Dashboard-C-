@@ -30,6 +30,8 @@ public class ClienteService
   public Cliente? GetById(int id)
   {
     return _context.Clientes
+    .Include(p => p.Solicitudes)
+    .ThenInclude(s => s.PlanPago)
     .AsNoTracking()
     .SingleOrDefault(p => p.Id == id);
   }
@@ -61,5 +63,9 @@ public class ClienteService
       _context.Clientes.Remove(clienteToDelete);
       _context.SaveChanges();
     }
+  }
+  private static DateTime ParseDate(string date)
+  {
+    return DateTime.SpecifyKind(DateTime.Parse(date), DateTimeKind.Utc);
   }
 }

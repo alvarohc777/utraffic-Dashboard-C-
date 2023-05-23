@@ -8,7 +8,6 @@ public class Solicitud
   public int Id { get; set; }
 
   [Required]
-  [MaxLength(100)]
   public int Monto { get; set; }
   public int Plazo { get; set; }
   [Required]

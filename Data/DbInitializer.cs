@@ -100,7 +100,7 @@ namespace Solicitudes.Data
           Solicitudes = new List<Solicitud>
           {
             solicitud1,
-
+            solicitud5
           }
         },
         new Cliente
@@ -111,7 +111,6 @@ namespace Solicitudes.Data
           Solicitudes = new List<Solicitud>
           {
             solicitud3,
-            solicitud5
           }
         },
       };

@@ -7,6 +7,8 @@ public class Pago
 {
   public int Id { get; set; }
 
+  [Required]
+  [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
   public DateTime Fecha { get; set; }
   public float Valor { get; set; }
   public string? Estado { get; set; }

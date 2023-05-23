@@ -15,4 +15,15 @@ public class ClienteContext : DbContext
   public DbSet<Solicitud> Solicitudes { get; set; }
   public DbSet<Pago> Pagos { get; set; }
 
+
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    modelBuilder.Entity<Cliente>()
+    .HasMany(c => c.Solicitudes)
+    .WithOne(s => s.Cliente)
+    .OnDelete(DeleteBehavior.SetNull);
+
+    base.OnModelCreating(modelBuilder);
+  }
+
 }
