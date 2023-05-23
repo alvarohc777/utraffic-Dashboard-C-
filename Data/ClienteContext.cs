@@ -13,18 +13,6 @@ public class ClienteContext : DbContext
 
   public DbSet<Cliente> Clientes { get; set; }
   public DbSet<Solicitud> Solicitudes { get; set; }
-  public DbSet<Pago> Paogs { get; set; }
-
-  // public DbSet<ClienteCredito> ClienteCreditos { get; set; }
-
-  // protected override void OnModelCreating(ModelBuilder modelBuilder)
-  // {
-  //   modelBuilder.Entity<Cliente>()
-  //       .HasMany(e => e.Creditos)
-  //       .WithMany(e => e.Clientes)
-  //       .UsingEntity<ClienteCredito>();
-  // }
-
-
+  public DbSet<Pago> Pagos { get; set; }
 
 }
