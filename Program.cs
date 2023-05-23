@@ -1,6 +1,6 @@
 using Solicitudes.Data;
 using Solicitudes.Services;
-using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -9,8 +9,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSqlite<ClienteContext>("Data Source=Solicitudes.db");
-// builder.Services.AddSqlite<ClienteContext>("Data Source=Solicitudes.db;Foreign Keys=True;");
+builder.Services.AddDbContext<ClienteContext>(options =>
+{
+  var connectionString = builder.Configuration.GetConnectionString("WebApiDatabase");
+  options.UseNpgsql(connectionString);
+});
+// builder.Services.AddSqlite<ClienteContext>("Data Source=Solicitudes.db");
 
 // Agregar los servicios
 builder.Services.AddScoped<ClienteService>();
