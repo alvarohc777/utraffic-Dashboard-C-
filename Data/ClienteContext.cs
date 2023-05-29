@@ -11,19 +11,26 @@ public class ClienteContext : DbContext
   }
 
 
-  public DbSet<Cliente> Clientes { get; set; }
-  public DbSet<Solicitud> Solicitudes { get; set; }
-  public DbSet<Pago> Pagos { get; set; }
+  public DbSet<Cliente> Clientes => Set<Cliente>();
+  public DbSet<Solicitud> Solicitudes => Set<Solicitud>();
+  public DbSet<Pago> Pagos => Set<Pago>();
 
 
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
-  {
-    modelBuilder.Entity<Cliente>()
-    .HasMany(c => c.Solicitudes)
-    .WithOne(s => s.Cliente)
-    .OnDelete(DeleteBehavior.SetNull);
+  // protected override void OnModelCreating(ModelBuilder modelBuilder)
+  // {
+  //   modelBuilder.Entity<Cliente>()
+  //   .HasMany(c => c.Solicitudes)
+  //   .WithOne(s => s.Cliente)
+  //   .OnDelete(DeleteBehavior.SetNull);
 
-    base.OnModelCreating(modelBuilder);
-  }
+
+  //   modelBuilder.Entity<Solicitud>()
+  //   .HasMany(s => s.PlanPago)
+  //   .WithOne(p => p.Solicitud)
+  //   // .HasForeignKey(p => p.SolicitudId)
+  //   .OnDelete(DeleteBehavior.SetNull);
+
+  //   base.OnModelCreating(modelBuilder);
+  // }
 
 }

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
+//namespace Solicitudes.Models;
 namespace Solicitudes.Models;
 
 public class Cliente

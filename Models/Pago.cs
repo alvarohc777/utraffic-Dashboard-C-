@@ -13,6 +13,8 @@ public class Pago
   public float Valor { get; set; }
   public string? Estado { get; set; }
 
+
+
   [JsonIgnore]
   public Solicitud? Solicitud { get; set; }
 
