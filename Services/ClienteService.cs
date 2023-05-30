@@ -64,6 +64,41 @@ public class ClienteService
       _context.SaveChanges();
     }
   }
+
+  public void CreateSolicitud(int clienteId, Solicitud solicitudToCreate)
+  {
+    // var clienteToUpdate = _context.Clientes.Find(clienteId);
+    Cliente clienteToUpdate = _context.Clientes
+    .Include(p => p.Solicitudes)
+    .SingleOrDefault(p => p.Id == clienteId);
+
+    if (clienteToUpdate is null)
+    {
+      throw new InvalidOperationException("Cliente does not exist");
+    }
+
+    Console.WriteLine("clienteToUpdate: " + clienteToUpdate); // Debugging statement
+    Console.WriteLine("solicitudToCreate: " + solicitudToCreate); // Debugging statement
+
+    // if (clienteToUpdate.Solicitudes is null)
+    // {
+    //   clienteToUpdate.Solicitudes = new List<Solicitud>(); // Initialize the collection
+    // }
+
+    clienteToUpdate.Solicitudes.Add(solicitudToCreate);
+    Console.WriteLine("clienteToUpdate after adding solicitud: " + clienteToUpdate); // Debugging statement
+
+    _context.SaveChanges();
+  }
+
+
+
+
+
+
+
+
+
   private static DateTime ParseDate(string date)
   {
     return DateTime.SpecifyKind(DateTime.Parse(date), DateTimeKind.Utc);

@@ -73,6 +73,24 @@ public class ClienteController : ControllerBase
       return NotFound();
     }
   }
+
+  [HttpPut("{id}/createSolicitud")]
+  public IActionResult CreateSolicitud(int id, Solicitud solicitudToCreate)
+  {
+    var clienteToUpdate = _service.GetById(id);
+
+    if (clienteToUpdate is not null)
+    {
+      _service.CreateSolicitud(id, solicitudToCreate);
+      return NoContent();
+    }
+    else
+    {
+      return NotFound();
+    }
+  }
+
+
 }
 
 

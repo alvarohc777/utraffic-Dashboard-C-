@@ -14,8 +14,8 @@ public class Pago
   public string? Estado { get; set; }
 
 
-
-  [JsonIgnore]
-  public Solicitud? Solicitud { get; set; }
+  // Si lo coloco, debo utilizarlo en el request al crear un crédito.
+  // [JsonIgnore]
+  // public Solicitud Solicitud { get; set; } = null!;
 
 }

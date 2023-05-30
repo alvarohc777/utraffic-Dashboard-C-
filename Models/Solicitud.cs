@@ -19,8 +19,8 @@ public class Solicitud
 
   // reference navigation property
 
-  [JsonIgnore]
-  public Cliente? Cliente { get; set; }
+  // [JsonIgnore]
+  // public Cliente Cliente { get; set; } = null!;
 
   public ICollection<Pago>? PlanPago { get; set; }
 
