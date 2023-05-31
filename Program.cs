@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ClienteContext>(options =>
 
 // Agregar los servicios
 builder.Services.AddScoped<ClienteService>();
+builder.Services.AddScoped<SolicitudService>();
 
 var app = builder.Build();
 
