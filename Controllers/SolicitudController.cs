@@ -22,9 +22,9 @@ public class SolicitudController : ControllerBase
   }
 
   [HttpGet("{id}")]
-  public ActionResult<Solicitud> GetById(int id)
+  public ActionResult<SolicitudDto> GetById(int id)
   {
-    Solicitud solicitud = _service.GetById(id);
+    SolicitudDto solicitud = _service.GetById(id);
     if (solicitud is not null) return solicitud;
     else return NotFound();
 
