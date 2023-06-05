@@ -17,8 +17,8 @@ public class SolicitudService
   public IEnumerable<SolicitudDto> GetAll()
   {
     return _context.Solicitudes
-    .Include(p => p.Cliente)
-    .Include(p => p.PlanPago)
+    // .Include(p => p.Cliente)
+    // .Include(p => p.PlanPago)
     .Select(p =>
     new SolicitudDto()
     {
@@ -29,11 +29,6 @@ public class SolicitudService
     })
     .AsNoTracking()
     .ToList();
-    // return _context.Solicitudes
-    // .Include(p => p.Cliente)
-    // // .Include(p => p.PlanPago)
-    // .AsNoTracking()
-    // .ToList();
   }
 
   public SolicitudDto? GetById(int id)
@@ -41,7 +36,7 @@ public class SolicitudService
     return _context.Solicitudes
     .Include(p => p.Cliente)
     .Include(p => p.PlanPago)
-    .Select(p=>
+    .Select(p =>
     new SolicitudDto()
     {
 
@@ -52,5 +47,21 @@ public class SolicitudService
     })
     .AsNoTracking()
     .SingleOrDefault(p => p.Id == id);
+  }
+
+  public void CreatePago(int solicitudId, Pago pagoToCreate)
+  {
+    Solicitud solicitudToUpdate = _context.Solicitudes
+    .Include(p => p.PlanPago)
+    .SingleOrDefault(p => p.Id == solicitudId)!;
+
+    if (solicitudToUpdate is null)
+    {
+      throw new InvalidOperationException("Solicitud does not exist.");
+    }
+
+    solicitudToUpdate.PlanPago.Add(pagoToCreate);
+    _context.SaveChanges();
+
   }
 }

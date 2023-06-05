@@ -3,6 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace Solicitudes.Models;
 
+
+
 public class Solicitud
 {
   public int Id { get; set; }
@@ -18,9 +20,9 @@ public class Solicitud
 
 
   // reference navigation property
-
+  // public int ClienteId { get; set; }
   [JsonIgnore]
-  public Cliente Cliente { get; set; } = null!;
+  public Cliente? Cliente { get; set; }
 
   public ICollection<Pago>? PlanPago { get; set; }
 

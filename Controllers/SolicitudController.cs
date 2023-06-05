@@ -29,4 +29,20 @@ public class SolicitudController : ControllerBase
     else return NotFound();
 
   }
+
+  [HttpPut("{id}/pagarCuota")]
+  public IActionResult PagarCuota(int id, Pago pagoToCreate)
+  {
+    var solicitudToUpdate = _service.GetById(id);
+
+    if (solicitudToUpdate is not null)
+    {
+      _service.CreatePago(id, pagoToCreate);
+      return NoContent();
+    }
+    else
+    {
+      return NotFound();
+    }
+  }
 }
