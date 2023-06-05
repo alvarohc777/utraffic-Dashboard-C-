@@ -13,9 +13,9 @@ public class Pago
   public float Valor { get; set; }
   public string? Estado { get; set; }
 
-
+  public int SolicitudId { get; set; }
   // Si lo coloco, debo utilizarlo en el request al crear un crédito.
-  // [JsonIgnore]
-  // public Solicitud Solicitud { get; set; } = null!;
+  [JsonIgnore]
+  public Solicitud? Solicitud { get; set; }
 
 }
