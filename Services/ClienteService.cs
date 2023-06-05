@@ -70,7 +70,7 @@ public class ClienteService
     // var clienteToUpdate = _context.Clientes.Find(clienteId);
     Cliente clienteToUpdate = _context.Clientes
     .Include(p => p.Solicitudes)
-    .SingleOrDefault(p => p.Id == clienteId);
+    .SingleOrDefault(p => p.Id == clienteId)!;
 
     if (clienteToUpdate is null)
     {
