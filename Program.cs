@@ -14,7 +14,6 @@ builder.Services.AddDbContext<ClienteContext>(options =>
   var connectionString = builder.Configuration.GetConnectionString("WebApiDatabase");
   options.UseNpgsql(connectionString);
 });
-// builder.Services.AddSqlite<ClienteContext>("Data Source=Solicitudes.db");
 
 // Agregar los servicios
 builder.Services.AddScoped<ClienteService>();
@@ -24,11 +23,13 @@ builder.Services.AddScoped<PagoService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-  app.UseSwagger();
-  app.UseSwaggerUI();
-}
+// if (app.Environment.IsDevelopment())
+// {
+//   app.UseSwagger();
+//   app.UseSwaggerUI();
+// }
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
