@@ -1,11 +1,17 @@
 using Solicitudes.Data;
 using Solicitudes.Services;
 using Microsoft.EntityFrameworkCore;
+using Solicitudes.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+// Agregar servicio
+builder.Services.AddWindowsService();
+// builder.Services.AddHostedService<ServiceA>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
