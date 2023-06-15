@@ -16,21 +16,28 @@ public class ClienteContext : DbContext
   public DbSet<Pago> Pagos => Set<Pago>();
 
 
-  // protected override void OnModelCreating(ModelBuilder modelBuilder)
-  // {
-  //   modelBuilder.Entity<Cliente>()
-  //   .HasMany(c => c.Solicitudes)
-  //   .WithOne(s => s.Cliente)
-  //   .OnDelete(DeleteBehavior.SetNull);
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    // modelBuilder.Entity<Solicitud>()
+    // .HasOne(s => s.Cliente)
+    // .WithMany(c => c.Solicitudes)
+    // .HasForeignKey(s => s.ClienteId)
+    // .OnDelete(DeleteBehavior.Cascade);
 
 
-  //   modelBuilder.Entity<Solicitud>()
-  //   .HasMany(s => s.PlanPago)
-  //   .WithOne(p => p.Solicitud)
-  //   // .HasForeignKey(p => p.SolicitudId)
-  //   .OnDelete(DeleteBehavior.SetNull);
+    // modelBuilder.Entity<Cliente>()
+    // .HasMany(c => c.Solicitudes)
+    // .WithOne(s => s.Cliente)
+    // .OnDelete(DeleteBehavior.SetNull);
 
-  //   base.OnModelCreating(modelBuilder);
-  // }
+
+    // modelBuilder.Entity<Solicitud>()
+    // .HasMany(s => s.PlanPago)
+    // .WithOne(p => p.Solicitud)
+    // // .HasForeignKey(p => p.SolicitudId)
+    // .OnDelete(DeleteBehavior.SetNull);
+
+    // base.OnModelCreating(modelBuilder);
+  }
 
 }

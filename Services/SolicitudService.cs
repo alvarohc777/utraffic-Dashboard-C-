@@ -14,22 +14,37 @@ public class SolicitudService
     _context = context;
   }
 
-  public IEnumerable<SolicitudDto> GetAll()
+  public List<object> GetAll()
   {
     return _context.Solicitudes
     // .Include(p => p.Cliente)
     // .Include(p => p.PlanPago)
     .Select(p =>
-    new SolicitudDto()
+    new 
     {
       Id = p.Id,
       Monto = p.Monto,
       Cliente = new ClienteDto(p.Cliente),
       PlanPago = p.PlanPago
     })
-    .AsNoTracking()
-    .ToList();
+    .ToList<object>();
   }
+  // public IEnumerable<SolicitudDto> GetAll()
+  // {
+  //   return _context.Solicitudes
+  //   // .Include(p => p.Cliente)
+  //   // .Include(p => p.PlanPago)
+  //   .Select(p =>
+  //   new SolicitudDto()
+  //   {
+  //     Id = p.Id,
+  //     Monto = p.Monto,
+  //     Cliente = new ClienteDto(p.Cliente),
+  //     PlanPago = p.PlanPago
+  //   })
+  //   .AsNoTracking()
+  //   .ToList();
+  // }
 
   public SolicitudDto? GetById(int id)
   {

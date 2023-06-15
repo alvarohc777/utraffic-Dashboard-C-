@@ -18,9 +18,9 @@ public class Solicitud
 
   public string? Estado { get; set; }
 
+  public int ClienteId { get; set; }
 
   // reference navigation property
-  // public int ClienteId { get; set; }
   [JsonIgnore]
   public Cliente? Cliente { get; set; }
 

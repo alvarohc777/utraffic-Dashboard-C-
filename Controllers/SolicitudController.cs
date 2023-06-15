@@ -18,7 +18,7 @@ public class SolicitudController : ControllerBase
   }
 
   [HttpGet]
-  public IEnumerable<SolicitudDto> GetAll()
+  public List<object> GetAll()
   {
     return _service.GetAll();
   }
@@ -29,7 +29,6 @@ public class SolicitudController : ControllerBase
     SolicitudDto solicitud = _service.GetById(id);
     if (solicitud is not null) return solicitud;
     else return NotFound();
-
   }
 
   [HttpPut("{id}/pagarCuota")]
