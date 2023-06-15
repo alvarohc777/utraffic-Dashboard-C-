@@ -1,10 +1,13 @@
 using Solicitudes.Models;
 using Solicitudes.Services;
 using Microsoft.AspNetCore.Mvc;
+using Solicitudes.Filters;
 namespace Solicitudes.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+// [ServiceFilter(typeof(LogActionFilter))]
+[ServiceFilter(typeof(LogActionFilterAsync))]
 public class ClienteController : ControllerBase
 {
   ClienteService _service;
