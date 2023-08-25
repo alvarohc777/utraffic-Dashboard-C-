@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  test-ubuntu:
+    image: ubuntu
+    stdin_open: true
+
+  
+
+
+  test-backend:
+    image: solicitudes-backend
+    environment:
+      - HOST=test-postgres
+    stdin_open: true
+    command: ./Solicitudes
+    ports:
+     - "80:80"
+
+  test-postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: herrada2022
+
