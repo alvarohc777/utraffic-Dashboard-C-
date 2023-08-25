@@ -19,7 +19,7 @@ builder.Services.AddWindowsService();
 builder.Services.AddScoped<LogActionFilter>();
 builder.Services.AddScoped<LogActionFilterAsync>();
 
-var logDirectory = "C:\\Solicitudes\\Solicitudes\\";
+var logDirectory = "/logs/solicitudes";
 var logFilePath = Path.Combine(logDirectory, "SolicitudesLog.txt");
 
 if (!Directory.Exists(logDirectory))
@@ -43,6 +43,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ClienteContext>(options =>
 {
   var connectionString = builder.Configuration.GetConnectionString("WebApiDatabase");
+  var host = Environment.GetEnvironmentVariable("HOST");
+  connectionString = connectionString.Replace("__HOST__", host);
   options.UseNpgsql(connectionString);
 });
 
